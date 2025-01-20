@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useLocation } from "react-router";
 
 import { MusicPlayer } from "~/components/organims/MusicPlayer";
 
@@ -20,9 +20,15 @@ export default function MainLayout() {
                 Inicio
               </Link>
             </li>
+
+            <li>
+              <Link className="hover:text-yellow-500 underline" to={"/events"}>
+                Eventos
+              </Link>
+            </li>
             <li>
               <Link className="hover:text-yellow-500 underline" to={"/about"}>
-                Sobre nosotros
+                Sobre <br /> nosotros
               </Link>
             </li>
           </ul>
