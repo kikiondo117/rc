@@ -13,10 +13,10 @@ export function MusicPlayer() {
         src="https://cast1.my-control-panel.com/proxy/radiochi/stream"
       />
       <button
-        className="bg-green-500 rounded-full p-2 text-white text-xs"
+        className="text-white text-base md:text-3xl"
         onClick={togglePlayPause}
       >
-        {isPlaying ? "Pause" : "Play"}
+        {isPlaying ? "⏸️" : "▶️"}
       </button>
       <label className="flex items-center gap-2 text-sm">
         Volume:

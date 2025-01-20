@@ -17,6 +17,8 @@ export default function About() {
           <p>Manuel Vera - Director</p>
         </div>
       </div>
+
+      <h3 className="text-2xl w-fit font-medium">Locutores</h3>
     </div>
   );
 }
