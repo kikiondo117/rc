@@ -18,7 +18,7 @@ export default function Home() {
 
         <ul className="flex flex-col justify-center items-center gap-4 md:flex-row md:flex-wrap">
           {programs.map((program) => (
-            <li>
+            <li key={program.title}>
               <ProgramCard
                 title={program.title}
                 days={program.days}

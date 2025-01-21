@@ -18,7 +18,7 @@ export const programs = [
     days: "Martes",
     time: "de 9:00 a 10:00pm",
     tags: ["Entretenimiento"],
-    img: "/public/imgs/content/cinex.jpg",
+    img: "https://res.cloudinary.com/kikis-javascript/image/upload/v1737418897/rc/rc-programs/cinex_ewg8pv.jpg",
   },
   {
     title: "Culturear",

@@ -6,32 +6,32 @@ export default function Events() {
       <h2>Rockstar - Radio Chilanga Live</h2>
       <div className="flex flex-wrap gap-4 justify-center items-center">
         <img
-          src="public/imgs/content/rock/turo.jpg"
+          src="https://res.cloudinary.com/kikis-javascript/image/upload/v1737418710/rc/turo_axofvd.jpg"
           alt="Turo Jackson"
           className="w-60 h-96"
         />
 
         <img
-          src="public/imgs/content/rock/fatal.jpg"
+          src="https://res.cloudinary.com/kikis-javascript/image/upload/v1737418710/rc/fatal_ccx4ke.jpg"
           alt="Fatal"
           className="w-60 h-96"
         />
 
         <img
-          src="public/imgs/content/rock/lord_reptil.jpg"
+          src="https://res.cloudinary.com/kikis-javascript/image/upload/v1737418710/rc/lord_reptil_fitsup.jpg"
           alt="Lord Reptil"
           className="w-60 h-96"
         />
 
         <img
-          src="public/imgs/content/rock/nix.jpg"
+          src="https://res.cloudinary.com/kikis-javascript/image/upload/v1737418710/rc/nix_uhcv8n.jpg"
           alt="Nix"
           className="w-60 h-96"
         />
 
         <img
-          src="public/imgs/content/rock/ultimatum.jpg"
-          alt="Nix"
+          src="https://res.cloudinary.com/kikis-javascript/image/upload/v1737418710/rc/ultimatum_auvjxz.jpg"
+          alt="Ultimatum"
           className="w-60 h-96"
         />
       </div>
