@@ -46,7 +46,7 @@ export const programs = [
     days: "Viernes",
     time: "de 9:00 a 11:00pm",
     tags: ["Educación", "Comedia"],
-    img: "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=194,h=224,fit=crop/Aq2o0Q3QDecPLEX8/maud-mp89Xejw3afP286b.jpeg",
+    img: "https://res.cloudinary.com/kikis-javascript/image/upload/v1737667167/rc/rc-programs/alien_t5ghlh.jpg",
   },
 ];
 
