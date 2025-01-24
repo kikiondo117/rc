@@ -35,7 +35,7 @@ export default function MainLayout() {
         </nav>
       </header>
 
-      <div className="  max-w-screen pb-14">
+      <div className="  max-w-screen pb-20 md:pb-60">
         <Outlet></Outlet>
       </div>
 
