@@ -4,7 +4,7 @@ import { MusicPlayer } from "~/components/organims/MusicPlayer";
 
 export default function MainLayout() {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto dark:text-white">
       <header className="md:mx-auto flex max-w-screen-lg items-center justify-between py-4 mx-4">
         <Link to="/" className="flex items-center">
           <img
