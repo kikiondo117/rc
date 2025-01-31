@@ -26,6 +26,16 @@ export default function MainLayout() {
                 Eventos
               </Link>
             </li>
+
+            <li>
+              <Link
+                className="hover:text-yellow-500 underline"
+                to={"/podcasts"}
+              >
+                Podcasts
+              </Link>
+            </li>
+
             <li>
               <Link className="hover:text-yellow-500 underline" to={"/about"}>
                 Sobre <br /> nosotros

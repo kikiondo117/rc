@@ -1,7 +1,7 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
 import { ProgramCard } from "~/components/molecules/ProgramCard/ProgramCard";
-import { programs } from "~/utils/programs";
+import { dayly, programs } from "~/utils/programs";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,8 +14,6 @@ export default function Home() {
   return (
     <div className="mx-4 flex flex-col gap-4">
       <div className="flex flex-col gap-4 items-center">
-        <h2 className="text-2xl w-fit font-medium self-start">Eventos</h2>
-
         <div className="flex flex-col gap-4 w-full max-w-screen-lg md:items-center">
           <h3 className="text-rc-primary font-extralight">
             Rockstar - Turo Jackson
@@ -32,8 +30,29 @@ export default function Home() {
         </div>
       </div>
 
+      <div>
+        <h2 className="text-2xl md:text-3xl w-fit font-medium">
+          Programas diarios
+        </h2>
+        <ul className="flex flex-col justify-center items-center gap-4 md:flex-row md:flex-wrap">
+          {dayly.map((program) => (
+            <li key={program.title}>
+              <ProgramCard
+                title={program.title}
+                days={program.days}
+                time={program.time}
+                tags={program.tags}
+                img={program.img}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <main className="flex flex-col gap-4">
-        <h1 className="text-2xl w-fit font-medium">Programas de la semana</h1>
+        <h1 className="text-2xl md:text-3xl w-fit font-medium">
+          Programas semanales
+        </h1>
 
         <ul className="flex flex-col justify-center items-center gap-4 md:flex-row md:flex-wrap">
           {programs.map((program) => (

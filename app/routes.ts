@@ -11,5 +11,6 @@ export default [
     route("about", "routes/about.tsx"),
     route("events", "routes/events.tsx"),
     route("upload", "routes/private/upload.tsx"),
+    route("podcasts", "routes/podcasts.tsx"),
   ]),
 ] satisfies RouteConfig;
