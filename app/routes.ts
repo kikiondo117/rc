@@ -13,4 +13,7 @@ export default [
     route("upload", "routes/private/upload.tsx"),
     route("podcasts", "routes/podcasts.tsx"),
   ]),
+  // APIS
+  route("cloudinary", "apis/cloudinary.ts"),
+  route("api/podcasts", "apis/podcasts.ts"),
 ] satisfies RouteConfig;

@@ -1,15 +1,13 @@
 import type { Route } from "../+types/root";
 import type { CloudinaryResource } from "~/types/cloudinary";
 
-import { getImageUrl } from "~/utils/cloudinary";
+import { useQuery } from "@tanstack/react-query";
 
-export async function loader() {
-  const images = await getImageUrl("rc");
-  return { images };
-}
-
-export default function Events({ loaderData }: Route.ComponentProps) {
-  const { images } = loaderData as unknown as { images: CloudinaryResource[] };
+export default function Events() {
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["events"],
+    queryFn: () => fetch(`/cloudinary`).then((res) => res.json()),
+  });
 
   return (
     <div className="mx-4 flex flex-col gap-4">
@@ -17,9 +15,13 @@ export default function Events({ loaderData }: Route.ComponentProps) {
 
       <h2>Rockstar - Radio Chilanga Live</h2>
 
-      <div className="flex flex-wrap gap-4 justify-center items-center">
-        {images &&
-          images.map((image) => (
+      {isLoading ? (
+        <div className="min-h-96  flex justify-center items-center">
+          Loading...
+        </div>
+      ) : (
+        <div className="flex flex-wrap gap-4 justify-center items-center">
+          {data.images.map((image: CloudinaryResource) => (
             <img
               key={image.filename}
               src={image.secure_url}
@@ -27,7 +29,8 @@ export default function Events({ loaderData }: Route.ComponentProps) {
               className="w-60 h-96"
             />
           ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
