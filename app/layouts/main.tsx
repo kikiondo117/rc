@@ -1,8 +1,12 @@
 import { Link, Outlet, useLocation } from "react-router";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { MusicPlayer } from "~/components/organims/MusicPlayer";
+import { eventsQueries } from "~/queries/programsQuery";
 
 export default function MainLayout() {
+  const queryClient = useQueryClient();
+
   return (
     <div className="container mx-auto dark:text-white">
       <header className="md:mx-auto flex max-w-screen-lg items-center justify-between py-4 mx-4">
@@ -22,7 +26,16 @@ export default function MainLayout() {
             </li>
 
             <li>
-              <Link className="hover:text-yellow-500 underline" to={"/events"}>
+              <Link
+                className="hover:text-yellow-500 underline"
+                to={"/events"}
+                onMouseOver={() => {
+                  queryClient.prefetchQuery({
+                    queryKey: eventsQueries.all().queryKey,
+                    queryFn: eventsQueries.all().queryFn,
+                  });
+                }}
+              >
                 Eventos
               </Link>
             </li>

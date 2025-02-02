@@ -1,7 +1,7 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
 import { ProgramCard } from "~/components/molecules/ProgramCard/ProgramCard";
-import { dayly, programs } from "~/utils/programs";
+import { daily, programs } from "~/utils/programs";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -16,11 +16,11 @@ export default function Home() {
       <div className="flex flex-col gap-4 items-center">
         <div className="flex flex-col gap-4 w-full max-w-screen-lg md:items-center">
           <h3 className="text-rc-primary font-extralight">
-            Rockstar - Turo Jackson
+            Rockstar - Silver Shadow
           </h3>
 
           <iframe
-            src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F100076177904911%2Fvideos%2F1691858868042704%2F&show_text=true&width=560&t=0"
+            src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F100076177904911%2Fvideos%2F3400822440055698%2F&show_text=false&width=560&t=0"
             className="w-full h-72 md:h-72 md:w-1/2"
             scrolling="no"
             frameBorder={1}
@@ -35,7 +35,7 @@ export default function Home() {
           Programas diarios
         </h2>
         <ul className="flex flex-col justify-center items-center gap-4 md:flex-row md:flex-wrap">
-          {dayly.map((program) => (
+          {daily.map((program) => (
             <li key={program.title}>
               <ProgramCard
                 title={program.title}

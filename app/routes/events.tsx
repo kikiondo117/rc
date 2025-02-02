@@ -2,10 +2,11 @@ import type { Route } from "../+types/root";
 import type { CloudinaryResource } from "~/types/cloudinary";
 
 import { useQuery } from "@tanstack/react-query";
+import { eventsQueries } from "~/queries/programsQuery";
 
 export default function Events() {
   const { isLoading, error, data } = useQuery({
-    queryKey: ["events"],
+    queryKey: eventsQueries.all().queryKey,
     queryFn: () => fetch(`/cloudinary`).then((res) => res.json()),
   });
 

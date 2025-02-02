@@ -50,7 +50,7 @@ export const programs = [
   },
 ];
 
-export const dayly = [
+export const daily = [
   {
     title: "La hora para reflexionar",
     days: "Lunes, Miercoles, Viernes, Sábado y Domingo",

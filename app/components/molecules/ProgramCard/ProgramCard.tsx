@@ -35,7 +35,12 @@ export function ProgramCard(props: ProgramCardProps) {
 
       <div className="absolute bottom-2 right-2 flex gap-4">
         {props.tags.map((tag) => (
-          <p className="bg-gray-300 rounded-full p-1 text-xs">{tag}</p>
+          <p
+            key={tag + props.title}
+            className="bg-gray-300 rounded-full p-1 text-xs"
+          >
+            {tag}
+          </p>
         ))}
       </div>
     </div>
