@@ -1,3 +1,5 @@
+import { RxAvatar } from "react-icons/rx";
+
 export default function About() {
   return (
     <div className="mx-4 flex flex-col gap-4">
@@ -23,6 +25,25 @@ export default function About() {
       </div>
 
       <h3 className="text-2xl w-fit font-medium">Locutores</h3>
+
+      <div className="flex flex-wrap gap-4 justify-center items-center">
+        <div>
+          <RxAvatar color="white" className="w-24 h-24" />
+          <p>Manuel Vera</p>
+        </div>
+        <div>
+          <RxAvatar color="white" className="w-24 h-24" />
+          <p className="text-center">Mayer</p>
+        </div>
+        <div>
+          <RxAvatar color="white" className="w-24 h-24" />
+          <p className="text-center">Alejandra</p>
+        </div>
+        <div>
+          <RxAvatar color="white" className="w-24 h-24" />
+          <p className="text-center">Mau</p>
+        </div>
+      </div>
     </div>
   );
 }

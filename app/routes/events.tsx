@@ -1,7 +1,8 @@
-import type { Route } from "../+types/root";
 import type { CloudinaryResource } from "~/types/cloudinary";
 
 import { useQuery } from "@tanstack/react-query";
+import { CgSpinner } from "react-icons/cg";
+
 import { eventsQueries } from "~/queries/programsQuery";
 
 export default function Events() {
@@ -17,8 +18,9 @@ export default function Events() {
       <h2>Rockstar - Radio Chilanga Live</h2>
 
       {isLoading ? (
-        <div className="min-h-96  flex justify-center items-center">
-          Loading...
+        <div className="min-h-[80vh] flex justify-center items-center gap-4">
+          <CgSpinner className="animate-spin text-white" />
+          <p>Cargando...</p>
         </div>
       ) : (
         <div className="flex flex-wrap gap-4 justify-center items-center">

@@ -1,6 +1,7 @@
 import type { CloudinaryResource } from "~/types/cloudinary";
 
 import { useQuery } from "@tanstack/react-query";
+import { CgSpinner } from "react-icons/cg";
 
 export default function Podcasts() {
   const { isLoading, error, data } = useQuery({
@@ -14,8 +15,9 @@ export default function Podcasts() {
 
       <div className="flex flex-wrap gap-4 justify-center items-center">
         {isLoading ? (
-          <div className="min-h-96  flex justify-center items-center">
-            Loading...
+          <div className="min-h-[80vh] flex justify-center items-center gap-4">
+            <CgSpinner className="animate-spin text-white" />
+            <p>Cargando...</p>
           </div>
         ) : (
           <>

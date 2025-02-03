@@ -10,23 +10,24 @@ export function MusicPlayer() {
     usePlayer(audioRef);
 
   return (
-    <div className="w-full dark:bg-white dark:text-black h-12 md:h-24 flex items-center justify-around px-4">
+    <div className="w-full dark:bg-white dark:text-black h-16 md:h-24 flex items-center justify-around px-4">
       <audio
         ref={audioRef}
         src="https://cast1.my-control-panel.com/proxy/radiochi/stream"
       />
 
       <div className="flex gap-4 items-center flex-1 md:flex-none">
-        {isPlaying && (
-          <div className="flex gap-1 items-center">
-            <IoRadioButtonOnOutline
-              color="red"
-              className="animate-pulse text-base md:text-3xl"
-            />
-          </div>
-        )}
+        <div className="flex gap-1 items-center">
+          <IoRadioButtonOnOutline
+            color={isPlaying ? "red" : "grey"}
+            className={`text-base md:text-3xl ${
+              isPlaying ? "animate-pulse" : "animate-none"
+            }`}
+          />
+        </div>
+
         <button
-          className="text-white text-base md:text-3xl "
+          className="text-white text-xl md:text-3xl"
           onClick={togglePlayPause}
         >
           {isPlaying ? (

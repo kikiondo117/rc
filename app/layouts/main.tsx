@@ -20,12 +20,6 @@ export default function MainLayout() {
         <nav className="mt-8">
           <ul className="flex justify-end gap-4">
             <li>
-              <Link className="hover:text-yellow-500 underline" to={"/"}>
-                Inicio
-              </Link>
-            </li>
-
-            <li>
               <Link
                 className="hover:text-yellow-500 underline"
                 to={"/events"}
