@@ -2,20 +2,18 @@ import type { Route } from "../+types/home";
 
 import {
   isRouteErrorResponse,
-  useActionData,
   useFetcher,
   type ActionFunctionArgs,
 } from "react-router";
 import invariant from "tiny-invariant";
 
 import { uploadAudioToCloudinary } from "~/utils/cloudinary";
+import { ConfettiCustom } from "~/components/molecules/Confetti/Confetti";
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const audioFile = formData.get("audio") as File; // 'audio' es el nombre del campo del formulario
   const folder = formData.get("folder");
-
-  console.log("audioFile", audioFile);
 
   invariant(audioFile, "No se proporcionó ningún archivo de audio.");
   invariant(folder, "No se proporcionó ningún folder.");
@@ -39,10 +37,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function UploadPage() {
   const fetcher = useFetcher();
-
   console.log("fetcher", fetcher);
-  console.log("status", fetcher.state);
-
   return (
     <div className=" justify-center items-center min-h-[70vh] flex flex-col gap-4">
       <fetcher.Form
@@ -52,7 +47,7 @@ export default function UploadPage() {
       >
         <label htmlFor="folder" className="text-xl flex flex-col gap-2">
           Selecciona tu programa de radio:
-          <select name="folder" id="folder">
+          <select name="folder" id="folder" className="text-base">
             <option value="cinex">Cinex</option>
             <option value="mente">SanaMente</option>
           </select>
@@ -78,6 +73,7 @@ export default function UploadPage() {
 
       {fetcher.data?.audioUrl && (
         <div>
+          <ConfettiCustom />
           <p>Audio subido correctamente:</p>
           <audio controls src={fetcher.data?.audioUrl}></audio>
         </div>
