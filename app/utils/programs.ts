@@ -54,14 +54,14 @@ export const daily = [
   {
     title: "La hora para reflexionar",
     days: "Lunes, Miercoles, Viernes, Sábado y Domingo",
-    time: "de 9:00 a 10:00pm",
+    time: "de 9:00 a 10:00am",
     tags: ["Reflexión"],
     img: "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=210,fit=crop/Aq2o0Q3QDecPLEX8/radio3-YBg4oLQXx9sMyK4e.jpeg",
   },
   {
     title: "Viejitas pero bonitas",
     days: "Lunes, Miercoles, Viernes, Sábado y Domingo",
-    time: "de 10:00 a 11:00pm",
+    time: "de 10:00 a 11:00am",
     tags: ["Musica"],
     img: "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=210,fit=crop/Aq2o0Q3QDecPLEX8/dalla-e-2024-07-23-15.50.32---a-serene-and-calming-radio-program-poster-titled-la-hora-para-reflexionar-.-the-background-features-a-peaceful-sunset-over-a-tranquil-landscape-with-m6LJ44P5jGho87XR.webp",
   },
