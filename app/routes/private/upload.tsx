@@ -3,6 +3,7 @@ import type { Route } from "../+types/home";
 import {
   isRouteErrorResponse,
   useActionData,
+  useFetcher,
   type ActionFunctionArgs,
 } from "react-router";
 import invariant from "tiny-invariant";
@@ -11,7 +12,7 @@ import { uploadAudioToCloudinary } from "~/utils/cloudinary";
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
-  const audioFile = formData.get("audio"); // 'audio' es el nombre del campo del formulario
+  const audioFile = formData.get("audio") as File; // 'audio' es el nombre del campo del formulario
   const folder = formData.get("folder");
 
   console.log("audioFile", audioFile);
@@ -37,11 +38,14 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function UploadPage() {
-  const actionData = useActionData<typeof action>();
+  const fetcher = useFetcher();
+
+  console.log("fetcher", fetcher);
+  console.log("status", fetcher.state);
 
   return (
-    <div className="flex justify-center items-center min-h-[70vh]">
-      <form
+    <div className=" justify-center items-center min-h-[70vh] flex flex-col gap-4">
+      <fetcher.Form
         method="post"
         encType="multipart/form-data"
         className="flex flex-col gap-4 md:w-96 border border-solid border-yellow-500 rounded-lg p-4"
@@ -62,15 +66,20 @@ export default function UploadPage() {
         <button
           type="submit"
           className="w-fit bg-blue-500 rounded-md p-2 mx-auto"
+          disabled={fetcher.state === "submitting"}
         >
-          Subir programa
+          {fetcher.state === "submitting" ? "Cargando" : "Subir programa"}
         </button>
-      </form>
+      </fetcher.Form>
 
-      {actionData?.audioUrl && (
+      {fetcher.state === "submitting" && (
+        <p>Se está subiendo el programa, por favor espere unos minutos...</p>
+      )}
+
+      {fetcher.data?.audioUrl && (
         <div>
           <p>Audio subido correctamente:</p>
-          <audio controls src={actionData.audioUrl}></audio>
+          <audio controls src={fetcher.data?.audioUrl}></audio>
         </div>
       )}
     </div>
