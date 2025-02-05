@@ -34,7 +34,8 @@ export async function getImageUrl(folder: string) {
 
 export async function uploadAudioToCloudinary(
   buffer: Buffer,
-  folderName: string
+  folderName: string,
+  name: string
 ) {
   return new Promise((resolve, reject) => {
     cloudinary.uploader
@@ -42,6 +43,7 @@ export async function uploadAudioToCloudinary(
         {
           resource_type: "auto", // Cloudinary detectará que es un archivo de audio
           folder: "rc/audio/" + folderName, // Especifica la carpeta en Cloudinary
+          filename_override: name,
         },
         (error, result) => {
           if (error) {

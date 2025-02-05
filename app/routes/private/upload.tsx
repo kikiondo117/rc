@@ -1,5 +1,6 @@
 import type { Route } from "../+types/home";
 
+import { useState } from "react";
 import {
   isRouteErrorResponse,
   useFetcher,
@@ -25,7 +26,8 @@ export async function action({ request }: ActionFunctionArgs) {
     // Sube el archivo a Cloudinary
     const audioUrl = await uploadAudioToCloudinary(
       Buffer.from(buffer),
-      folder as string
+      folder as string,
+      audioFile.name
     );
 
     return { audioUrl }; // Devuelve la URL del archivo subido
@@ -37,13 +39,26 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function UploadPage() {
   const fetcher = useFetcher();
-  console.log("fetcher", fetcher);
+  const [error, setError] = useState(false);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const maxSize = 100 * 1024 * 1024; // 100MB en bytes
+      if (file.size > maxSize) {
+        setError(true);
+      } else {
+        setError(false);
+      }
+    }
+  };
+
   return (
     <div className=" justify-center items-center min-h-[70vh] flex flex-col gap-4">
       <fetcher.Form
         method="post"
         encType="multipart/form-data"
-        className="flex flex-col gap-4 md:w-96 border border-solid border-yellow-500 rounded-lg p-4"
+        className="flex flex-col gap-4 w-80 md:w-96 border border-solid border-yellow-500 rounded-lg p-4"
       >
         <label htmlFor="folder" className="text-xl flex flex-col gap-2">
           Selecciona tu programa de radio:
@@ -55,13 +70,27 @@ export default function UploadPage() {
 
         <label htmlFor="file" className="flex flex-col gap-2">
           <p className="text-xl">Sube tu programa en formato mp3 o wav:</p>
-          <input type="file" name="audio" accept="audio/*" required />
+          <input
+            type="file"
+            name="audio"
+            accept="audio/*"
+            required
+            onChange={handleFileChange}
+          />
+          {error && (
+            <p className="text-red-500">
+              El archivo supera los 100MB. Por favor, sube un archivo más
+              pequeño.
+            </p>
+          )}
         </label>
 
         <button
           type="submit"
-          className="w-fit bg-blue-500 rounded-md p-2 mx-auto"
-          disabled={fetcher.state === "submitting"}
+          className={`w-fit bg-blue-500 rounded-md p-2 mx-auto ${
+            error && "opacity-50"
+          }`}
+          disabled={fetcher.state === "submitting" || error}
         >
           {fetcher.state === "submitting" ? "Cargando" : "Subir programa"}
         </button>
