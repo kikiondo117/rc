@@ -43,7 +43,7 @@ export async function uploadAudioToCloudinary(
         {
           resource_type: "auto", // Cloudinary detectará que es un archivo de audio
           folder: "rc/audio/" + folderName, // Especifica la carpeta en Cloudinary
-          filename_override: name,
+          public_id: name,
         },
         (error, result) => {
           if (error) {

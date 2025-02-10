@@ -15,9 +15,11 @@ export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const audioFile = formData.get("audio") as File; // 'audio' es el nombre del campo del formulario
   const folder = formData.get("folder");
+  const name = formData.get("name");
 
   invariant(audioFile, "No se proporcionó ningún archivo de audio.");
   invariant(folder, "No se proporcionó ningún folder.");
+  invariant(name, "No se proporcionó ningún titulo.");
 
   // Convierte el archivo en un buffer
   const buffer = await audioFile.arrayBuffer();
@@ -27,7 +29,7 @@ export async function action({ request }: ActionFunctionArgs) {
     const audioUrl = await uploadAudioToCloudinary(
       Buffer.from(buffer),
       folder as string,
-      audioFile.name
+      name
     );
 
     return { audioUrl }; // Devuelve la URL del archivo subido
@@ -54,17 +56,32 @@ export default function UploadPage() {
   };
 
   return (
-    <div className=" justify-center items-center min-h-[70vh] flex flex-col gap-4">
+    <div className="mx-4 justify-center items-center min-h-[70vh] flex flex-col gap-4">
       <fetcher.Form
         method="post"
         encType="multipart/form-data"
         className="flex flex-col gap-4 w-80 md:w-96 border border-solid border-yellow-500 rounded-lg p-4"
       >
         <label htmlFor="folder" className="text-xl flex flex-col gap-2">
+          Titulo del programa:
+          <input
+            name="name"
+            id="name"
+            className="text-base h-8 rounded-md p-2"
+            required
+          />
+        </label>
+
+        <label htmlFor="folder" className="text-xl flex flex-col gap-2">
           Selecciona tu programa de radio:
-          <select name="folder" id="folder" className="text-base">
+          <select
+            name="folder"
+            id="folder"
+            className="text-base h-8 rounded-md p-2"
+          >
             <option value="cinex">Cinex</option>
             <option value="mente">SanaMente</option>
+            <option value="culturear">Culturear</option>
           </select>
         </label>
 

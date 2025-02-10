@@ -6,6 +6,7 @@ type ProgramCardProps = {
   time: string;
   tags: string[];
   img: string;
+  broadcaster: string;
 };
 
 export function ProgramCard(props: ProgramCardProps) {
@@ -24,9 +25,15 @@ export function ProgramCard(props: ProgramCardProps) {
         </div>
 
         <div className="flex justify-between pt-2 pb-4 items-center">
-          <p className="text-amber-800 text-sm">
-            {props.days} <br /> {props.time}
-          </p>
+          <div className="flex flex-col gap-2">
+            <p className="text-amber-800 text-sm">
+              {props.days} <br /> {props.time}
+            </p>
+            <strong className="text-sm text-gray-500">
+              Locutor: <span className="font-light">{props?.broadcaster}</span>
+            </strong>
+          </div>
+
           <Link to={"/"} className="cursor-pointer text-xs underline">
             Más información
           </Link>
