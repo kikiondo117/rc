@@ -15,8 +15,8 @@ export default function Podcasts() {
 
       <div className="flex flex-wrap gap-4 justify-center items-center">
         {isLoading ? (
-          <div className="min-h-[80vh] flex justify-center items-center gap-4">
-            <CgSpinner className="animate-spin text-white" />
+          <div className="min-h-[80vh] flex flex-col justify-center items-center gap-4">
+            <span className="loading loading-ring loading-lg"></span>
             <p>Cargando...</p>
           </div>
         ) : (

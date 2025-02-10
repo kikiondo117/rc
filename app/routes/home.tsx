@@ -31,11 +31,27 @@ export default function Home() {
         </div>
       </div>
 
-      <div>
+      <div className="flex flex-col gap-4">
         <h2 className="text-2xl md:text-3xl w-fit font-medium">
           Programas regulares
         </h2>
-        <ul className="flex flex-col justify-center items-center gap-4 md:flex-row md:flex-wrap">
+
+        <div className="carousel carousel-center bg-neutral rounded-box w-full space-x-4 p-4">
+          {daily.map((program) => (
+            <div className="carousel-item" key={program.title}>
+              <ProgramCard
+                title={program.title}
+                days={program.days}
+                time={program.time}
+                tags={program.tags}
+                img={program.img}
+                broadcaster={program.broadcaster}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* <ul className="flex flex-col justify-center items-center gap-4 md:flex-row md:flex-wrap">
           {daily.map((program) => (
             <li key={program.title}>
               <ProgramCard
@@ -48,7 +64,7 @@ export default function Home() {
               />
             </li>
           ))}
-        </ul>
+        </ul> */}
       </div>
 
       <main className="flex flex-col gap-4">
@@ -73,7 +89,7 @@ export default function Home() {
       </main>
 
       <div className="flex flex-col gap-4 justify-center items-center">
-        <h3 className="text-2xl w-fit font-medium">Programas grabados</h3>
+        <h3 className="divider divider-primary">Programas grabados</h3>
 
         <div>
           {recordings.map((recording) => {

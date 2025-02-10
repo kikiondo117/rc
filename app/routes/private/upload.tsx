@@ -91,8 +91,9 @@ export default function UploadPage() {
             type="file"
             name="audio"
             accept="audio/*"
-            required
+            className="file-input w-full max-w-xs"
             onChange={handleFileChange}
+            required
           />
           {error && (
             <p className="text-red-500">
