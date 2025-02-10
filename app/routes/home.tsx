@@ -83,6 +83,12 @@ export default function Home() {
         <h3 className="divider divider-primary">Programas grabados</h3>
 
         <div className="flex flex-col gap-4  box-border">
+          {isLoading && (
+            <div className="min-h-[80vh] flex flex-col justify-center items-center gap-4">
+              <span className="loading loading-ring loading-lg"></span>
+              <p>Cargando...</p>
+            </div>
+          )}
           {data &&
             data.podcasts.map((recording) => {
               return (
