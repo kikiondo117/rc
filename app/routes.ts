@@ -16,4 +16,5 @@ export default [
   // APIS
   route("cloudinary", "apis/cloudinary.ts"),
   route("api/podcasts", "apis/podcasts.ts"),
+  route("api/podcasts_audio", "apis/podcasts_audio.ts"),
 ] satisfies RouteConfig;

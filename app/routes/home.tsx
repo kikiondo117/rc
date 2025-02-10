@@ -1,5 +1,6 @@
-import { Link } from "react-router";
 import type { Route } from "./+types/home";
+import { Link } from "react-router";
+import { useQuery } from "@tanstack/react-query";
 
 import { ProgramCard } from "~/components/molecules/ProgramCard/ProgramCard";
 import { daily, programs, recordings } from "~/utils/programs";
@@ -12,6 +13,11 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["podcasts_audio"],
+    queryFn: () => fetch(`api/podcasts_audio`).then((res) => res.json()),
+  });
+
   return (
     <div className="mx-4 flex flex-col gap-4">
       <div className="flex flex-col gap-4 items-center">
@@ -50,21 +56,6 @@ export default function Home() {
             </div>
           ))}
         </div>
-
-        {/* <ul className="flex flex-col justify-center items-center gap-4 md:flex-row md:flex-wrap">
-          {daily.map((program) => (
-            <li key={program.title}>
-              <ProgramCard
-                title={program.title}
-                days={program.days}
-                time={program.time}
-                tags={program.tags}
-                img={program.img}
-                broadcaster={program.broadcaster}
-              />
-            </li>
-          ))}
-        </ul> */}
       </div>
 
       <main className="flex flex-col gap-4">
@@ -91,18 +82,22 @@ export default function Home() {
       <div className="flex flex-col gap-4 justify-center items-center">
         <h3 className="divider divider-primary">Programas grabados</h3>
 
-        <div>
-          {recordings.map((recording) => {
-            return (
-              <div>
-                <img src={recording.url} />
-                <div>
-                  <p>{recording.title}</p>
-                  <audio controls src={recording.url}></audio>
+        <div className="flex flex-col gap-4  box-border">
+          {data &&
+            data.podcasts.map((recording) => {
+              return (
+                <div className="card bg-neutral text-neutral-content w-full  md:w-96">
+                  <div className="card-body items-center text-center">
+                    <h2 className="card-title">Podcast disponibles!</h2>
+                    <p>Radiochilanga.</p>
+                    <div className="card-actions justify-end">
+                      <p>{recording.public_id}</p>
+                      <audio controls src={recording.url}></audio>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
 
         {/* <Link to="/grabados">

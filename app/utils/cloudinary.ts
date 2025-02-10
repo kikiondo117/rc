@@ -32,6 +32,25 @@ export async function getImageUrl(folder: string) {
   return data.resources.map((img) => img);
 }
 
+export async function getPodcasts(folderName: string) {
+  try {
+    const result = await cloudinary.api.resources({
+      type: "upload",
+      resource_type: "video", // Cloudinary maneja los audios como "video"
+      prefix: `${folderName}/`, // Prefijo para filtrar archivos en la carpeta
+    });
+
+    // Retorna solo las URLs seguras de los archivos encontrados
+    return result.resources.map((file) => ({
+      public_id: file.public_id,
+      url: file.secure_url,
+    }));
+  } catch (error) {
+    console.error("Error fetching audio files:", error);
+    throw error;
+  }
+}
+
 export async function uploadAudioToCloudinary(
   buffer: Buffer,
   folderName: string,
