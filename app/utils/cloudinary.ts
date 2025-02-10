@@ -36,8 +36,8 @@ export async function getPodcasts(folderName: string) {
   try {
     const result = await cloudinary.api.resources({
       type: "upload",
-      resource_type: "video", // Cloudinary maneja los audios como "video"
-      prefix: `${folderName}/`, // Prefijo para filtrar archivos en la carpeta
+      resource_type: "video",
+      prefix: `${folderName}/`,
     });
 
     // Retorna solo las URLs seguras de los archivos encontrados
