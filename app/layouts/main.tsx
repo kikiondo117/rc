@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, Outlet, useLocation } from "react-router";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -18,38 +19,82 @@ export default function MainLayout() {
               alt="Radio chilanga"
             />
           </Link>
-          <nav className="mt-8">
-            <ul className="flex justify-end gap-4">
-              <li>
-                <Link
-                  className="hover:text-yellow-500 underline"
-                  to={"/events"}
-                  onMouseOver={() => {
-                    queryClient.prefetchQuery({
-                      queryKey: eventsQueries.all().queryKey,
-                      queryFn: eventsQueries.all().queryFn,
-                    });
-                  }}
+          <nav>
+            <div className="navbar-start">
+              <div className="dropdown">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle"
                 >
-                  Eventos
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="hover:text-yellow-500 underline"
-                  to={"/podcasts"}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h7"
+                    />
+                  </svg>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-2 w-52 p-2 -left-40 shadow"
                 >
-                  Podcasts
-                </Link>
-              </li>
-
-              <li>
-                <Link className="hover:text-yellow-500 underline" to={"/about"}>
-                  Sobre <br /> nosotros
-                </Link>
-              </li>
-            </ul>
+                  <li>
+                    <Link
+                      className="hover:text-yellow-500 flex justify-center"
+                      to={"/"}
+                    >
+                      Inicio
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="hover:text-yellow-500 flex justify-center"
+                      to={"/events"}
+                      onMouseOver={() => {
+                        queryClient.prefetchQuery({
+                          queryKey: eventsQueries.all().queryKey,
+                          queryFn: eventsQueries.all().queryFn,
+                        });
+                      }}
+                    >
+                      Eventos
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="hover:text-yellow-500 flex justify-center"
+                      to={"/recordings"}
+                    >
+                      Podcast y grabaciones
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="hover:text-yellow-500 flex justify-center"
+                      to={"/about"}
+                    >
+                      Sobre nosotros
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="hover:text-yellow-500 flex justify-center"
+                      to={"/podcasts"}
+                    >
+                      Colaboraciones
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </nav>
         </header>
 

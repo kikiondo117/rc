@@ -32,12 +32,13 @@ export async function getImageUrl(folder: string) {
   return data.resources.map((img) => img);
 }
 
-export async function getPodcasts(folderName: string) {
+export async function getPodcasts(folderName: string, total: number) {
   try {
     const result = await cloudinary.api.resources({
       type: "upload",
       resource_type: "video",
       prefix: `${folderName}/`,
+      max_results: total,
     });
 
     // Retorna solo las URLs seguras de los archivos encontrados

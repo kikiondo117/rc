@@ -12,6 +12,7 @@ export default [
     route("events", "routes/events.tsx"),
     route("upload", "routes/private/upload.tsx"),
     route("podcasts", "routes/podcasts.tsx"),
+    route("recordings", "routes/recordings.tsx"),
   ]),
   // APIS
   route("cloudinary", "apis/cloudinary.ts"),

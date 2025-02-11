@@ -14,8 +14,9 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   const { isLoading, error, data } = useQuery({
-    queryKey: ["podcasts_audio"],
-    queryFn: () => fetch(`api/podcasts_audio`).then((res) => res.json()),
+    queryKey: ["podcasts_audio", 5],
+    queryFn: () =>
+      fetch(`api/podcasts_audio?total=5`).then((res) => res.json()),
   });
 
   return (
@@ -82,17 +83,18 @@ export default function Home() {
       <div className="flex flex-col gap-4 justify-center items-center">
         <h3 className="divider divider-primary">Programas grabados</h3>
 
-        <div className="flex flex-col gap-4  box-border">
+        <div className="flex flex-col gap-4 box-border md:flex-row md:flex-wrap w-full ">
           {isLoading && (
             <div className="min-h-[80vh] flex flex-col justify-center items-center gap-4">
               <span className="loading loading-ring loading-lg"></span>
               <p>Cargando...</p>
             </div>
           )}
+
           {data &&
             data.podcasts.map((recording) => {
               return (
-                <div className="card bg-neutral text-neutral-content w-full  md:w-96">
+                <div className="card bg-neutral text-neutral-content w-full  md:w-80">
                   <div className="card-body items-center text-center">
                     <h2 className="card-title">Podcast disponibles!</h2>
                     <p>Radiochilanga.</p>
@@ -106,11 +108,11 @@ export default function Home() {
             })}
         </div>
 
-        {/* <Link to="/grabados">
+        <Link to="/recordings">
           <button className="bg-rc-primary text-white text-base font-medium py-2 px-4 rounded-md">
             Ver todos
           </button>
-        </Link> */}
+        </Link>
       </div>
     </div>
   );
