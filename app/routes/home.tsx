@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { ProgramCard } from "~/components/molecules/ProgramCard/ProgramCard";
 import { daily, programs, recordings } from "~/utils/programs";
+import { ConfettiCustom } from "~/components/molecules/Confetti/Confetti";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -28,7 +29,8 @@ export default function Home() {
           </h3>
 
           <iframe
-            src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F100076177904911%2Fvideos%2F3400822440055698%2F&show_text=false&width=560&t=0"
+            src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F100076177904911%2Fvid
+eos%2F3400822440055698%2F&show_text=false&width=560&t=0"
             className="w-full h-48 md:h-72 md:w-1/2"
             scrolling="no"
             frameBorder={1}
@@ -76,32 +78,30 @@ export default function Home() {
             </thead>
             <tbody>
               {programs.map((program) => (
-                <>
-                  <tr>
-                    <td>
-                      <div className="flex items-center gap-3">
-                        <div className="avatar">
-                          <div className="mask mask-squircle h-12 w-12">
-                            <img src={program.img} alt={program.title} />
-                          </div>
-                        </div>
-                        <div>
-                          <div className="font-bold">{program.broadcaster}</div>
-                          <div className="text-sm opacity-50">México</div>
+                <tr key={program.title}>
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle h-12 w-12">
+                          <img src={program.img} alt={program.title} />
                         </div>
                       </div>
-                    </td>
-                    <td>
-                      {program.title}
-                      <br />
-                      <span className="badge badge-ghost badge-sm">
-                        {program.tags.join(", ")}
-                      </span>
-                    </td>
-                    <td>{program.days}</td>
-                    <td>{program.time}</td>
-                  </tr>
-                </>
+                      <div>
+                        <div className="font-bold">{program.broadcaster}</div>
+                        <div className="text-sm opacity-50">México</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    {program.title}
+                    <br />
+                    <span className="badge badge-ghost badge-sm">
+                      {program.tags.join(", ")}
+                    </span>
+                  </td>
+                  <td>{program.days}</td>
+                  <td>{program.time}</td>
+                </tr>
               ))}
             </tbody>
           </table>
@@ -122,7 +122,10 @@ export default function Home() {
           {data &&
             data.podcasts.map((recording) => {
               return (
-                <div className="card bg-neutral text-neutral-content w-full  md:w-80">
+                <div
+                  key={recording.url}
+                  className="card bg-neutral text-neutral-content w-full  md:w-80"
+                >
                   <div className="card-body items-center text-center">
                     <h2 className="card-title">Podcast disponibles!</h2>
                     <p>Radiochilanga.</p>
