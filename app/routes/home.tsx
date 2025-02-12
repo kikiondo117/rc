@@ -63,21 +63,49 @@ export default function Home() {
         <h1 className="text-2xl md:text-3xl w-fit font-medium">
           Programas semanales
         </h1>
-
-        <ul className="flex flex-col justify-center items-center gap-4 md:flex-row md:flex-wrap">
-          {programs.map((program) => (
-            <li key={program.title}>
-              <ProgramCard
-                title={program.title}
-                days={program.days}
-                time={program.time}
-                tags={program.tags}
-                img={program.img}
-                broadcaster={program.broadcaster}
-              />
-            </li>
-          ))}
-        </ul>
+        <div className="overflow-x-auto">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>Locutor</th>
+                <th>Programa</th>
+                <th>Días</th>
+                <th>Horario</th>
+              </tr>
+            </thead>
+            <tbody>
+              {programs.map((program) => (
+                <>
+                  <tr>
+                    <td>
+                      <div className="flex items-center gap-3">
+                        <div className="avatar">
+                          <div className="mask mask-squircle h-12 w-12">
+                            <img src={program.img} alt={program.title} />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="font-bold">{program.broadcaster}</div>
+                          <div className="text-sm opacity-50">México</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      {program.title}
+                      <br />
+                      <span className="badge badge-ghost badge-sm">
+                        {program.tags.join(", ")}
+                      </span>
+                    </td>
+                    <td>{program.days}</td>
+                    <td>{program.time}</td>
+                  </tr>
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </main>
 
       <div className="flex flex-col gap-4 justify-center items-center">
