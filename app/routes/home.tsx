@@ -21,7 +21,7 @@ export default function Home() {
   });
 
   return (
-    <div className="mx-4 flex flex-col gap-4">
+    <div className="mx-4 flex flex-col gap-8">
       <div className="flex flex-col gap-4 items-center">
         <div className="flex flex-col gap-4 w-full max-w-screen-lg md:items-center">
           <h3 className="text-rc-primary font-extralight">
@@ -109,7 +109,9 @@ eos%2F3400822440055698%2F&show_text=false&width=560&t=0"
       </main>
 
       <div className="flex flex-col gap-4 justify-center items-center">
-        <h3 className="divider divider-primary">Programas grabados</h3>
+        <h3 className="divider divider-primary md:text-2xl">
+          Programas grabados
+        </h3>
 
         <div className="flex flex-col gap-4 box-border md:flex-row md:flex-wrap w-full ">
           {isLoading && (
@@ -144,6 +146,56 @@ eos%2F3400822440055698%2F&show_text=false&width=560&t=0"
             Ver todos
           </button>
         </Link>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <h4 className="text-center text-xl md:text-2xl">PATROCINADORES</h4>
+
+        <div className="carousel carousel-end rounded-box">
+          <div className="carousel-item">
+            <img
+              src="https://res.cloudinary.com/kikis-javascript/image/upload/v1739402845/rc/Patrocinadores/kikis-404_2_hzsg9e.jpg"
+              alt="kikis 404"
+              className="h-full w-80"
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp"
+              alt="Drink"
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp"
+              alt="Drink"
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp"
+              alt="Drink"
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp"
+              alt="Drink"
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp"
+              alt="Drink"
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp"
+              alt="Drink"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
