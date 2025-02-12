@@ -16,7 +16,7 @@ export default function Recordings() {
 
       <div className="flex flex-col gap-4 box-border md:flex-row md:flex-wrap w-full ">
         {isLoading && (
-          <div className="min-h-[80vh] flex flex-col justify-center items-center gap-4">
+          <div className="min-h-[80vh] flex flex-col justify-center items-center gap-4 w-full">
             <span className="loading loading-ring loading-lg"></span>
             <p>Cargando...</p>
           </div>
