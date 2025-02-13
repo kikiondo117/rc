@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <div className="mx-4 flex flex-col gap-8">
       <section
-        className="hero min-h-[80vh]"
+        className="hero min-h-[50vh]"
         style={{
           backgroundImage:
             "url(https://images.unsplash.com/photo-1616626710700-8cb67b8260d1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8b24lMjBhaXJ8ZW58MHx8MHx8fDA%3D)",
@@ -44,12 +44,12 @@ export default function Home() {
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">Radiochilanga Live</h1>
             <p className="mb-5">
-              Ve las entrevistas en vivo y grabas de los programas de radio
-              chilanga.
+              Ve las entrevistas grabadas en nuestra pagína oficial de de
+              Facebook - Radio Chilanga Live.
             </p>
 
-            <Link to="#live" className="btn bg-rc-primary text-white">
-              Visitar Radiochilanga Live
+            <Link to="#live" className="btn bg-blue-500 text-white">
+              Visitar
             </Link>
           </div>
         </div>
@@ -144,10 +144,12 @@ export default function Home() {
                   className="card bg-neutral text-neutral-content w-full  md:w-80"
                 >
                   <div className="card-body items-center text-center">
-                    <h2 className="card-title">Podcast disponibles!</h2>
-                    <p>Radiochilanga.</p>
+                    <h2 className="card-title">¡Podcast disponibles!</h2>
+
                     <div className="card-actions justify-end">
-                      <p>{recording.public_id}</p>
+                      <p className="text-rc-primary">
+                        {recording.public_id.split("/").pop()}
+                      </p>
                       <audio controls src={recording.url}></audio>
                     </div>
                   </div>
@@ -215,16 +217,12 @@ export default function Home() {
 
       <section id="live" className="flex flex-col gap-4">
         <h3 className="divider divider-secondary md:text-2xl ">
-          Programas grabados
+          Radio Chilanga Live
         </h3>
 
-        <div className="text-justify">
+        <div className="text-center font-thin">
           Radiochilanga Live es una plataforma en la que podrás ver las
-          entrevistas en vivo y grabar los programas de radio chilanga. Esta
-          plataforma es una alternativa a la radio en vivo, ya que no necesitas
-          tener una cuenta en internet para poder ver las entrevistas en vivo.
-          Además, puedes grabar los programas de radio chilanga y compartirlos
-          con tus amigos y familiares.
+          entrevistas en vivo.
         </div>
         <Link
           to="https://www.facebook.com/profile.php?id=100076177904911"
