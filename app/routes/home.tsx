@@ -32,25 +32,30 @@ export default function Home() {
 
   return (
     <div className="mx-4 flex flex-col gap-8">
-      <div className="flex flex-col gap-4 items-center">
-        <div className="flex flex-col gap-4 w-full max-w-screen-lg md:items-center">
-          <h3 className="text-rc-primary font-extralight">
-            Rockstar - Silver Shadow
-          </h3>
+      <section
+        className="hero min-h-[80vh]"
+        style={{
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1616626710700-8cb67b8260d1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8b24lMjBhaXJ8ZW58MHx8MHx8fDA%3D)",
+        }}
+      >
+        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-content text-neutral-content text-center">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl font-bold">Radiochilanga Live</h1>
+            <p className="mb-5">
+              Ve las entrevistas en vivo y grabas de los programas de radio
+              chilanga.
+            </p>
 
-          <iframe
-            src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F100076177904911%2Fvid
-eos%2F3400822440055698%2F&show_text=false&width=560&t=0"
-            className="w-full h-48 md:h-72 md:w-1/2"
-            scrolling="no"
-            frameBorder={1}
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-            allowFullScreen={true}
-          ></iframe>
+            <Link to="#live" className="btn bg-rc-primary text-white">
+              Visitar Radiochilanga Live
+            </Link>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="flex flex-col gap-4">
+      <section className="flex flex-col gap-4">
         <h2 className="text-2xl md:text-3xl w-fit font-medium">
           Programas regulares
         </h2>
@@ -69,7 +74,7 @@ eos%2F3400822440055698%2F&show_text=false&width=560&t=0"
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
       <main className="flex flex-col gap-4">
         <h1 className="text-2xl md:text-3xl w-fit font-medium">
@@ -118,7 +123,7 @@ eos%2F3400822440055698%2F&show_text=false&width=560&t=0"
         </div>
       </main>
 
-      <div className="flex flex-col gap-4 justify-center items-center">
+      <section className="flex flex-col gap-4 justify-center items-center">
         <h3 className="divider divider-primary md:text-2xl">
           Programas grabados
         </h3>
@@ -156,7 +161,7 @@ eos%2F3400822440055698%2F&show_text=false&width=560&t=0"
             Ver todos
           </button>
         </Link>
-      </div>
+      </section>
 
       <div className="flex flex-col gap-4">
         <h4 className="text-center text-xl md:text-2xl">PATROCINADORES</h4>
@@ -207,6 +212,28 @@ eos%2F3400822440055698%2F&show_text=false&width=560&t=0"
           </div>
         </div>
       </div>
+
+      <section id="live" className="flex flex-col gap-4">
+        <h3 className="divider divider-secondary md:text-2xl ">
+          Programas grabados
+        </h3>
+
+        <div className="text-justify">
+          Radiochilanga Live es una plataforma en la que podrás ver las
+          entrevistas en vivo y grabar los programas de radio chilanga. Esta
+          plataforma es una alternativa a la radio en vivo, ya que no necesitas
+          tener una cuenta en internet para poder ver las entrevistas en vivo.
+          Además, puedes grabar los programas de radio chilanga y compartirlos
+          con tus amigos y familiares.
+        </div>
+        <Link
+          to="https://www.facebook.com/profile.php?id=100076177904911"
+          className="btn btn-primary text-white max-w-xs mx-auto"
+          target="_blank"
+        >
+          Visitar Radiochilanga Live
+        </Link>
+      </section>
     </div>
   );
 }

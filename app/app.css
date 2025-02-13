@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   @apply bg-white dark:bg-rc-bg;
