@@ -9,7 +9,17 @@ import { ConfettiCustom } from "~/components/molecules/Confetti/Confetti";
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Radio chilanga" },
-    { name: "description", content: "Bienvenidos a radio chilanga!" },
+    {
+      name: "description",
+      content: "Bienvenidos a radio chilanga! tu radio online",
+      keywords: "Radio Chilanga, música mexicana, radio online, música en vivo",
+      "og:title": "Radio Chilanga",
+      "og:description":
+        "Disfruta de la mejor música mexicana en Radio Chilanga, disponible online en todo el mundo.",
+      "og:type": "website",
+      "og:url": "https://radiochilanga.com",
+      "og:image": "https://radiochilanga.com/logo.jpg",
+    },
   ];
 }
 
