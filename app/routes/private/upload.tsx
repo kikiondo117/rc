@@ -93,6 +93,7 @@ export default function UploadPage() {
             <option value="cinex">Cinex</option>
             <option value="mente">SanaMente</option>
             <option value="culturear">Culturear</option>
+            <option value="alien">Alien Mix</option>
           </select>
         </label>
 

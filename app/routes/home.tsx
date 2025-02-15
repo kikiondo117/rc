@@ -144,7 +144,7 @@ export default function Home() {
                   className="card bg-neutral text-neutral-content w-full  md:w-80"
                 >
                   <div className="card-body items-center text-center">
-                    <h2 className="card-title">¡Podcast disponibles!</h2>
+                    <h2 className="card-title">¡Programa disponibles!</h2>
 
                     <div className="card-actions justify-end">
                       <p className="text-rc-primary">

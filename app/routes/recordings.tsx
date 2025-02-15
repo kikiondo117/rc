@@ -28,10 +28,10 @@ export default function Recordings() {
               <div className="card bg-neutral text-neutral-content w-full  md:w-80 indicator">
                 <span className="indicator-item badge badge-primary">new</span>
                 <div className="card-body items-center text-center ">
-                  <h2 className="card-title">Podcast</h2>
+                  <h2 className="card-title">Programas grabados</h2>
                   <p>Radiochilanga.</p>
                   <div className="card-actions justify-end">
-                    <p>{recording.public_id}</p>
+                    <p>{recording.public_id.split("/").pop()}</p>
                     <audio controls src={recording.url}></audio>
                   </div>
                 </div>
