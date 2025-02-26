@@ -39,7 +39,7 @@ export default function Home() {
         className="hero min-h-[50vh] relative"
         style={{
           backgroundImage:
-            "url(https://images.unsplash.com/photo-1616626710700-8cb67b8260d1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8b24lMjBhaXJ8ZW58MHx8MHx8fDA%3D)",
+            "url(https://images.unsplash.com/photo-1559712852-ed6997bfb2b7?q=80&w=3628&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
@@ -174,10 +174,10 @@ export default function Home() {
                   <div className="card-body items-center text-center">
                     <h2 className="card-title">¡Programa disponibles!</h2>
 
-                    <p className="text-purple-400 font-bold">{value}</p>
+                    <p className="text-yellow-500 font-medium">{value}</p>
 
                     <div className="card-actions justify-end">
-                      <p className="text-rc-primary">
+                      <p className="text-rc-primary font-light">
                         {recording.public_id.split("-").pop()}
                       </p>
                       <audio controls src={recording.url}></audio>
@@ -245,23 +245,31 @@ export default function Home() {
         </div>
       </div>
 
-      <section id="live" className="flex flex-col gap-4">
+      <section>
         <h3 className="divider divider-secondary md:text-2xl ">
           Radio Chilanga Live
         </h3>
 
-        <div className="text-center font-thin">
-          Radiochilanga Live es una plataforma en la que podrás ver las
-          entrevistas en vivo.
+        <div className="flex justify-center">
+          <div className="mockup-phone">
+            <div className="camera"></div>
+            <div className="display">
+              <div className="artboard artboard-demo phone-1 flex flex-col gap-4">
+                <p className="text-center">
+                  Radiochilanga Live es una plataforma en la que podrás ver las
+                  entrevistas en vivo.
+                </p>
+                <Link
+                  to="https://www.facebook.com/profile.php?id=100076177904911"
+                  className="btn btn-primary text-white max-w-xs mx-auto"
+                  target="_blank"
+                >
+                  Visitar Radiochilanga Live
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <Link
-          to="https://www.facebook.com/profile.php?id=100076177904911"
-          className="btn btn-primary text-white max-w-xs mx-auto"
-          target="_blank"
-        >
-          Visitar Radiochilanga Live
-        </Link>
       </section>
     </div>
   );
