@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ProgramCard } from "~/components/molecules/ProgramCard/ProgramCard";
 import { daily, programs, recordings } from "~/utils/programs";
 import { ConfettiCustom } from "~/components/molecules/Confetti/Confetti";
+import { LogoCarousel } from "~/components/organims/LogoCarousel";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -32,8 +33,10 @@ export default function Home() {
 
   return (
     <div className="mx-4 flex flex-col gap-8">
+      <ConfettiCustom />
+
       <section
-        className="hero min-h-[50vh]"
+        className="hero min-h-[50vh] relative"
         style={{
           backgroundImage:
             "url(https://images.unsplash.com/photo-1616626710700-8cb67b8260d1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8b24lMjBhaXJ8ZW58MHx8MHx8fDA%3D)",
@@ -42,16 +45,20 @@ export default function Home() {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Radiochilanga Live</h1>
+            <h1 className="mb-5 text-5xl font-bold">Radio Chilanga</h1>
             <p className="mb-5">
-              Ve las entrevistas grabadas en nuestra pagína oficial de de
-              Facebook - Radio Chilanga Live.
+              Gracias a todos por el apoyo, en especial a los patrocinadores que
+              nos han ayudado para que este proyecto pueda ser realizado.
             </p>
 
-            <Link to="#live" className="btn bg-blue-500 text-white">
+            {/* <Link to="#live" className="btn bg-blue-500 text-white">
               Visitar
-            </Link>
+            </Link> */}
           </div>
+        </div>
+
+        <div className="bottom-0 absolute w-full">
+          <LogoCarousel />
         </div>
       </section>
 
@@ -138,6 +145,9 @@ export default function Home() {
 
           {data &&
             data.podcasts.map((recording) => {
+              const match = recording.public_id.match(/\/([^\/]+)-[^-]+$/);
+              const value = match ? match[1] : "Desconocido";
+
               return (
                 <div
                   key={recording.url}
@@ -146,9 +156,11 @@ export default function Home() {
                   <div className="card-body items-center text-center">
                     <h2 className="card-title">¡Programa disponibles!</h2>
 
+                    <p className="text-purple-400 font-bold">{value}</p>
+
                     <div className="card-actions justify-end">
                       <p className="text-rc-primary">
-                        {recording.public_id.split("/").pop()}
+                        {recording.public_id.split("-").pop()}
                       </p>
                       <audio controls src={recording.url}></audio>
                     </div>
@@ -224,6 +236,7 @@ export default function Home() {
           Radiochilanga Live es una plataforma en la que podrás ver las
           entrevistas en vivo.
         </div>
+
         <Link
           to="https://www.facebook.com/profile.php?id=100076177904911"
           className="btn btn-primary text-white max-w-xs mx-auto"

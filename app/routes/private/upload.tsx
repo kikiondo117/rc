@@ -29,7 +29,7 @@ export async function action({ request }: ActionFunctionArgs) {
     const audioUrl = await uploadAudioToCloudinary(
       Buffer.from(buffer),
       folder as string,
-      name
+      `${folder}-${name}`
     );
 
     return { audioUrl }; // Devuelve la URL del archivo subido
@@ -90,10 +90,11 @@ export default function UploadPage() {
             <option disabled value="" selected>
               Selecciona tu programa
             </option>
-            <option value="cinex">Cinex</option>
-            <option value="mente">SanaMente</option>
-            <option value="culturear">Culturear</option>
-            <option value="alien">Alien Mix</option>
+
+            <option value="SanaMente">SanaMente</option>
+            <option value="Culturear">Culturear</option>
+            <option value="Alien Mix">Alien Mix</option>
+            <option value="PodCat">PodCat</option>
           </select>
         </label>
 

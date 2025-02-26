@@ -16,12 +16,12 @@ export const programs = [
     broadcaster: "Leticia Mayer",
   },
   {
-    title: "Cinex",
+    title: "PodCat",
     days: "Martes",
     time: "de 9:00 a 10:00pm",
     tags: ["Entretenimiento"],
     img: "https://res.cloudinary.com/kikis-javascript/image/upload/v1737418897/rc/rc-programs/cinex_ewg8pv.jpg",
-    broadcaster: "Alejandra",
+    broadcaster: "PodCat",
   },
   {
     title: "Culturear",
