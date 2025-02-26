@@ -10,6 +10,7 @@ import invariant from "tiny-invariant";
 
 import { uploadAudioToCloudinary } from "~/utils/cloudinary";
 import { ConfettiCustom } from "~/components/molecules/Confetti/Confetti";
+import { uploadToFTP } from "~/utils/ftp";
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -31,6 +32,9 @@ export async function action({ request }: ActionFunctionArgs) {
       folder as string,
       `${folder}-${name}`
     );
+
+    // Sube al servidor FTP
+    await uploadToFTP(Buffer.from(buffer), name as string, folder as string);
 
     return { audioUrl }; // Devuelve la URL del archivo subido
   } catch (error) {
@@ -93,7 +97,7 @@ export default function UploadPage() {
 
             <option value="SanaMente">SanaMente</option>
             <option value="Culturear">Culturear</option>
-            <option value="Alien Mix">Alien Mix</option>
+            <option value="AlienMix">Alien Mix</option>
             <option value="PodCat">PodCat</option>
           </select>
         </label>
