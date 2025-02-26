@@ -81,6 +81,24 @@ export default function Home() {
             </div>
           ))}
         </div>
+
+        <div className="chat chat-start">
+          <div className="chat-bubble chat-bubble-primary">
+            ¿Cómo puedo mandar saludos al los programas regulares?
+          </div>
+        </div>
+
+        <div className="chat chat-end">
+          <div className="chat-bubble chat-bubble-info">
+            Para saludos y preguntas tenemos el siguiente numero
+          </div>
+        </div>
+        <div className="chat chat-end">
+          <div className="chat-bubble chat-bubble-info">+52 55 8795 2622</div>
+        </div>
+        <div className="chat chat-end">
+          <div className="chat-bubble chat-bubble-info">Manuel Vera</div>
+        </div>
       </section>
 
       <main className="flex flex-col gap-4">
